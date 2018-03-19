@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.objectFactory" value="spring"/>
+	<!-- 注册国际化文件 -->
+	<constant name="struts.custom.i18n.resources" value="message"></constant>
+	<package name="strutsDemo" extends="struts-default" namespace="/">
+	
+	   <action name="views_*_*">
+			<result name="success" type="dispatcher">/WEB-INF/views/{1}/{2}.jsp</result>
+		</action>
+	
+	</package>
+</struts>

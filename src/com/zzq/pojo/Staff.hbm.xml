@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.zzq.pojo.Staff" table="staff">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="name" />
+        </property>
+        <property name="age" type="java.lang.Integer">
+            <column name="age" />
+        </property>
+        <property name="sex" type="java.lang.String">
+            <column name="sex"/>
+        </property>
+        <property name="phone" type="java.lang.String">
+            <column name="phone"/>
+        </property>
+        <property name="province" type="java.lang.String">
+            <column name="province" />
+        </property>
+        <property name="city" type="java.lang.String">
+            <column name="city" />
+        </property>
+        <property name="county" type="java.lang.String">
+            <column name="county" />
+        </property>
+    </class>
+</hibernate-mapping>

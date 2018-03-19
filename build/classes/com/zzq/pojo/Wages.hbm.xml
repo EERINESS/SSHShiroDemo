@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.zzq.pojo.Wages" table="wages">
+		<id name="wagesId" type="java.lang.Integer">
+			<column name="wages_id"></column>
+			<generator class="identity"></generator>
+		</id>
+		<property name="salary" type="java.lang.String"></property>
+		 <!-- 怎么加载对象，抓取策略：join联合查询（默认），select:一条条的查询 -->  
+        <one-to-one name="employee" class="com.zzq.pojo.Employee" property-ref="wages"></one-to-one>  
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.zzq.pojo.Post" table="post">
+		<id name="postId" type="java.lang.Integer">
+			<column name="post_id"></column>
+			<generator class="identity"></generator>
+		</id>
+		<property name="postName" type="java.lang.String">
+			<column name="post_name"></column>
+		</property>
+		<property name="depId" type="java.lang.Integer">
+			<column name="dep_id"></column>
+		</property>
+		<set name="department" table="dep_post">
+			<!-- 第三张表中关联职位id外键名称 -->
+			<key column="postId"></key>
+			<many-to-many class="com.zzq.pojo.Department" column="depId"></many-to-many>
+		</set>
+	</class>
+</hibernate-mapping>

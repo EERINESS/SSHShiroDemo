@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.zzq.pojo.Employee" table="employee">
+		<id name="empId" type="java.lang.Integer">
+			<column name="emp_id"></column>
+			<generator class="identity"></generator>
+		</id>
+		<property name="empName" type="java.lang.String">
+			<column name="emp_name"></column>
+		</property>
+		<property name="empSex" type="java.lang.String">
+			<column name="emp_sex"></column>
+		</property>
+		<property name="empAge" type="java.lang.String">
+			<column name="emp_age"></column>
+		</property>
+		<property name="depId" type="java.lang.Integer">
+			<column name="dep_id"></column>
+		</property>
+		 <!-- 由于它是一对一的唯一外键关联，它是多对一关联的特例-->  
+        <!-- wages属性，表达的是本对象与wages的多对一关系。 -->  
+        <many-to-one name="wages" class="com.zzq.pojo.Wages" column="wagId" cascade="all" unique="true"></many-to-one>
+   		<!-- 配置员工与部门的多对一关系 -->
+   		<many-to-one name="department" class="com.zzq.pojo.Department" column="depId" insert="false" update="false"></many-to-one>
+    </class>
+</hibernate-mapping>

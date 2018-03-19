@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.zzq.pojo.Department" table="department">
+		<id name="depId" type="java.lang.Integer">
+			<column name="dep_id"></column>
+			<generator class="identity"></generator>
+		</id>
+		<property name="depName" type="java.lang.String">
+			<column name="dep_name"></column>
+		</property>
+		<property name="postId" type="java.lang.Integer">
+			<column name="post_id"></column>
+		</property>
+		<!-- 配置一对多
+			name:Set集合的命名
+			inverse:是否关闭外键维护
+			laze:延迟加载(懒加载)
+		-->
+		<set name="employee" cascade="all">
+			<!-- 做为外键的字段 -->
+			<key column="depId"></key>
+			<!-- 多的那边的路径 -->
+			<one-to-many class="com.zzq.pojo.Employee" />
+		</set>	
+			<!-- 配置多对多 -->
+		<!-- 
+			name:set集合名称
+			table:第三张表的名称
+		 -->
+		<set name="post" table="dep_post" cascade="save-update,delete">
+			<!-- 第三张表中关联部门id外键名称 -->
+			<key column="depId"></key>
+			<!-- 
+				class:另一边的路径
+				column:第三张表中关联另一边的外键
+			 -->
+			<many-to-many class="com.zzq.pojo.Post" column="postId"></many-to-many>
+		</set>
+	</class>
+</hibernate-mapping>

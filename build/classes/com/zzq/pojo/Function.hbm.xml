@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.zzq.pojo.Function" table="auth_function">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+           	<generator class="native"/>
+        </id>
+        <many-to-one name="function" class="com.zzq.pojo.Function" fetch="select">
+            <column name="pid" />
+        </many-to-one>
+        <property name="name" type="java.lang.String">
+            <column name="name" />
+        </property>
+        <property name="code" type="java.lang.String">
+            <column name="code" />
+        </property>
+        <property name="description" type="java.lang.String">
+            <column name="description" />
+        </property>
+        <property name="page" type="java.lang.String">
+            <column name="page" />
+        </property>
+        <property name="generatemenu" type="java.lang.String">
+            <column name="generatemenu" />
+        </property>
+        <property name="zindex" type="java.lang.Integer">
+            <column name="zindex" />
+        </property>
+        <set name="roles" inverse="true" table="role_function">
+            <key>
+                <column name="function_id" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.zzq.pojo.Role">
+                <column name="role_id" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="functions" inverse="true">
+            <key>
+                <column name="pid" />
+            </key>
+            <one-to-many class="com.zzq.pojo.Function" />
+        </set>
+    </class>
+</hibernate-mapping>
